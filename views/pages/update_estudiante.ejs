@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="public/imgs/favicon.ico"
+      type="image/x-icon" />
+
+    <!--fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../public/css/menu.css" />
+    <link rel="stylesheet" href="../public/css/home.css" />
+    <title>Detalles del Estudiante</title>
+  </head>
+  <body style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; font-family: Arial, sans-serif;">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="col-md-6 p-5" style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h3 class="text-center">
+          <a href="/Crud-Completo-con-NodeJS-Express-y-MySQL" style="color: white; text-decoration: none;">
+            <i class="bi bi-arrow-left-circle"></i>
+          </a>
+          Actualizar Estudiante
+        </h3>
+        <form action="/actualizar-estudiante/<%= estudiante.id_estudiante %>" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+          <div class="mb-3">
+            <label for="nombre_alumno" class="form-label"> Alumno </label>
+            <input type="text" name="nombre_alumno" class="form-control" value="<%= estudiante.nombre_alumno %>" style="border-radius: 10px; padding: 10px;">
+          </div>
+          <div class="mb-3">
+            <label for="email_alumno" class="form-label"> Email </label>
+            <input type="email" name="email_alumno" class="form-control" value="<%= estudiante.email_alumno %>" style="border-radius: 10px; padding: 10px;">
+          </div>
+          <div class="mb-3">
+            <label for="curso_alumno">Curso</label>
+            <select name="curso_alumno" class="form-select" style="border-radius: 10px; padding: 10px;">
+              <option value="" <% if (estudiante.curso_alumno === "") { %>selected<% } %>>Seleccionar el curso</option>
+              <option value="Python" <% if (estudiante.curso_alumno === "Python") { %>selected<% } %>>HTML5 / CSS3</option>
+              <option value="NodeJS" <% if (estudiante.curso_alumno === "NodeJS") { %>selected<% } %>>NodeJS</option>
+              <option value="PHP" <% if (estudiante.curso_alumno === "PHP") { %>selected<% } %>>PHP</option>
+              <option value="JavaScript" <% if (estudiante.curso_alumno === "JavaScript") { %>selected<% } %>>JavaScript</option>
+            </select>
+          </div>
+          <div class="d-grid gap-2 col-12 mx-auto mt-4 mb-4">
+            <button class="btn btn-primary" type="submit" style="background: #ff9800; border: none; padding: 12px; font-size: 18px; border-radius: 10px; cursor: pointer; transition: 0.3s;">
+              Actualizar Estudiante
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <%- include('../includes/scripts') %>
+  </body>
+  
+</html>
